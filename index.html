@@ -103,7 +103,7 @@
                         <div class="navDrop-btn">
                             <div class="dropdown">
                                 <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
-                                <span class="btnDropdown"></span>
+                                    <span class="btnDropdown"></span>
                                     Shop
                                 </button>
                                 <ul class="dropdown-menu">
@@ -1829,7 +1829,9 @@
     <script>
         $(document).ready(function () {
             $('.features-detail').slick({
+                lazyLoad: 'ondemand',
                 autoplaySpeed: 2000,
+                autoplay: true,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 dots: true,
@@ -1837,6 +1839,8 @@
                 infinite: true,
                 speed: 300,
                 autoplay: true,
+                lazyLoadEager: 4, // load more images in advance
+                preload: 'all',
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -1867,6 +1871,10 @@
                     },
                 ],
             });
+        });
+
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('.features-detail').slick('setPosition');
         });
     </script>
 </body>
